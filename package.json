@@ -5,11 +5,13 @@
   "bugs": {
     "url": "https://github.com/jaredrcleghorn/auto-pet-feeder-api/issues"
   },
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jaredrcleghorn/auto-pet-feeder-api.git"
   },
   "scripts": {
+    "start": "node $npm_package_main",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
