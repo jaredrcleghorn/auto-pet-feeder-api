@@ -15,5 +15,8 @@
 			"user": "autopetfeeder1@gmail.com",
 			"pass": ""
 		}
+	},
+	"jwt": {
+		"secret": ""
 	}
 }

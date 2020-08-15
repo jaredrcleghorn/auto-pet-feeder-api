@@ -1,7 +1,9 @@
 import express from 'express'
+import jwt from 'jsonwebtoken'
 import { MongoError } from 'mongodb'
 import mongoose from 'mongoose'
 import nodemailer from 'nodemailer'
+import { hashPassword } from './functions'
 import {
 	ConfirmationCode,
 	User,
@@ -64,6 +66,18 @@ app.post('/verifyConfirmationCode', express.json(), async (request, response) =>
 	} catch (error) {
 		response.sendStatus(500)
 		console.error(error)
+	}
+})
+
+app.post('/tokens', express.json(), async (request, response) => {
+	// Read the user with the given email.
+	const user = await User.findByEmail(request.body.email).exec()
+
+	// Check if the given password is valid.
+	if (user !== null && hashPassword(user.salt, request.body.password) === user.hashedPassword) {
+		response.json({ token: jwt.sign({ email: user.email }, config.jwt.secret, { expiresIn: '1h' }) })
+	} else {
+		response.sendStatus(400)
 	}
 })
 
