@@ -1,3 +1,4 @@
+import regeneratorRuntime from 'regenerator-runtime'
 import express from 'express'
 import jwt from 'jsonwebtoken'
 import { MongoError } from 'mongodb'
