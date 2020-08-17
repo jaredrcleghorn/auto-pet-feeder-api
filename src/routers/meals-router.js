@@ -32,4 +32,14 @@ mealsRouter.post('/', verifyToken, express.json(), async (request, response) => 
 	}
 })
 
+mealsRouter.get('/', verifyToken, async (request, response) => {
+	const feeder = await Feeder.findById(request.query.feederId).exec()
+
+	if (feeder !== null && feeder.email === response.locals.email) {
+		response.json(await Meal.findByFeederId(request.query.feederId))
+	} else {
+		response.status(400).send('Invalid Feeder ID')
+	}
+})
+
 export default mealsRouter
