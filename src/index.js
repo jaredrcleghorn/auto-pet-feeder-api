@@ -9,7 +9,10 @@ import {
 	ConfirmationCode,
 	User,
 } from './models'
-import { usersRouter } from './routers'
+import {
+	feedersRouter,
+	usersRouter,
+} from './routers'
 import config from '../config.json'
 
 const app = express()
@@ -83,6 +86,7 @@ app.post('/tokens', express.json(), async (request, response) => {
 })
 
 // Use Routers.
+app.use('/feeders', feedersRouter)
 app.use('/users', usersRouter)
 
 // Connect to the database.
