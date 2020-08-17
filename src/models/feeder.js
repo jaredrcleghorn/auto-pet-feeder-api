@@ -9,4 +9,8 @@ const feederSchema = new mongoose.Schema({
 	},
 })
 
+feederSchema.statics.findByEmail = function(email) {
+	return this.find({ email }, '_id name')
+}
+
 export default mongoose.model('Feeder', feederSchema)

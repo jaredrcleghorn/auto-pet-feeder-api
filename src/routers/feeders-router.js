@@ -10,7 +10,11 @@ feedersRouter.post('/', verifyToken, express.json(), async (request, response) =
 		name: request.body.name,
 	}])
 
-	response.status(201).json({ id: feeder._id })
+	response.status(201).json({ id: feeder.id })
+})
+
+feedersRouter.get('/', verifyToken, async (request, response) => {
+	response.json(await Feeder.findByEmail(response.locals.email).exec())
 })
 
 export default feedersRouter
