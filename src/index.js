@@ -11,6 +11,7 @@ import {
 } from './models'
 import {
 	feedersRouter,
+	mealsRouter,
 	usersRouter,
 } from './routers'
 import config from '../config.json'
@@ -87,6 +88,7 @@ app.post('/tokens', express.json(), async (request, response) => {
 
 // Use Routers.
 app.use('/feeders', feedersRouter)
+app.use('/meals', mealsRouter)
 app.use('/users', usersRouter)
 
 // Connect to the database.
