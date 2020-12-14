@@ -29,4 +29,4 @@ confirmationCodeSchema.statics.deleteByEmail = function(email, session) {
 	return this.deleteOne(this.translateAliases({ email }), { session })
 }
 
-export default mongoose.model('Confirmation Code', confirmationCodeSchema)
+export default mongoose.model('Confirmation Code', confirmationCodeSchema, 'confirmationCodes')
