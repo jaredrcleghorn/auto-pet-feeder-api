@@ -92,7 +92,7 @@ app.use('/meals', mealsRouter)
 app.use('/users', usersRouter)
 
 // Connect to the database.
-mongoose.connect(`mongodb://${config.mongodb.username}:${config.mongodb.password}@${config.mongodb.host}:${config.mongodb.port}/${config.mongodb.database}`, {
+mongoose.connect(`mongodb://${config.mongodb.host}:${config.mongodb.port}/${config.mongodb.database}`, {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useUnifiedTopology: true,
